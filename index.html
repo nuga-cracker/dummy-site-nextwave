@@ -31,4 +31,56 @@
         function App() {
             const [view, setView] = useState('landing');
 
-            if
+            if (view === 'landing') {
+                return (
+                    <div>
+                        <nav className="nav">
+                            <div style={{fontWeight:'bold', fontSize:'20px'}}>NextWave</div>
+                            <div>로그인</div>
+                        </nav>
+                        <div className="hero">
+                            <h1>더 나은 업무를 위한 선택</h1>
+                            <p>일정, 할 일, 문서 공유를 한 곳에서 관리하세요.</p>
+                            <button className="btn-blue" onClick={() => setView('signup')}>지금 무료로 시작하기</button>
+                        </div>
+                    </div>
+                );
+            }
+
+            if (view === 'signup') {
+                return (
+                    <div className="modal-overlay">
+                        <div className="modal">
+                            <h2>회원가입</h2>
+                            <p style={{fontSize:'13px', color:'#777'}}>71.9%의 이탈률이 발생하는 복잡한 가입창</p>
+                            <input className="input-field" placeholder="이름" />
+                            <input className="input-field" placeholder="이메일" />
+                            <input className="input-field" type="password" placeholder="비밀번호(특수문자 포함)" />
+                            <select className="input-field"><option>직종 선택</option><option>마케팅</option></select>
+                            <button className="btn-blue" style={{width:'100%', marginTop:'10px', background:'#28a745'}} onClick={() => setView('dashboard')}>가입 완료</button>
+                            <p style={{fontSize:'12px', marginTop:'15px', cursor:'pointer'}} onClick={() => setView('landing')}>뒤로가기</p>
+                        </div>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="dashboard">
+                    <div className="sidebar">
+                        <h3>NextWave</h3>
+                        <p>🏠 홈</p><p>📅 일정</p><p>✅ 할 일</p>
+                    </div>
+                    <div className="content">
+                        <h2>반갑습니다, 신입 마케터님!</h2>
+                        <div className="card"><h4>오늘의 일정</h4><p style={{color:'#999'}}>데이터가 없습니다.</p></div>
+                        <button onClick={() => setView('landing')}>로그아웃</button>
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
