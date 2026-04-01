@@ -34,7 +34,19 @@
             const Landing = () => (
                 <div>
                     <nav className="nav">
-                        <div style={{fontWeight:'bold', fontSize:'24px', color:'#007bff'}}>NextWave</div>
+                       <div style={{display:'flex', alignItems:'center', gap:'10px'}}>
+                            {/* 로고 이미지 */}
+                            <img 
+                                src="./logo.png" 
+                                alt="NextWave Logo" 
+                                style={{height: '30px', width: 'auto'}} 
+                            />
+                            {/* 텍스트 로고 (이미지에 텍스트가 포함되어 있지만, 가독성을 위해 병기) */}
+                            <div style={{fontWeight:'bold', fontSize:'20px', color:'#007bff'}}>
+                                NextWave
+                            </div>
+                        </div>
+
                         <div style={{fontSize:'14px', color:'#666'}}>로그인 | 고객센터</div>
                     </nav>
                     <div className="hero">
