@@ -1,3 +1,32 @@
+/* 사이트 전체 폰트 적용 */
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans 적용 */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 메뉴 링크 스타일 (파란색+밑줄 제거) */
+.nav-links li a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #334155;        /* 세련된 다크 그레이로 변경 */
+    font-weight: 500;      /* 중간 굵기 */
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.nav-links li a:hover {
+    color: #2563eb;        /* 마우스 올렸을 때만 파란색 */
+}
+
+/* 로고 스타일 */
+.logo {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;      /* 로고는 굵게 */
+    color: #2563eb;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 /* 1. 네비게이션 바 전체 레이아웃 교정 */
 .navbar {
     display: flex;
