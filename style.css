@@ -1,119 +1,47 @@
-:root {
-    --primary-blue: #2563eb;
-    --text-dark: #1e293b;
-    --text-gray: #64748b;
-    --bg-light: #f8fafc;
-}
-
-body {
-    margin: 0;
-    font-family: 'Pretendard', sans-serif;
-    color: var(--text-dark);
-    background-color: var(--bg-light);
-    line-height: 1.6;
-}
-
+/* 1. 네비게이션 바 전체 레이아웃 교정 */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 5%;
-    background: white;
+    justify-content: space-between; /* 로고와 메뉴를 양끝으로 */
+    align-items: center;            /* 수직 중앙 정렬 */
+    padding: 1rem 10%;             /* 좌우 여백 확보 */
+    background: #ffffff;
     border-bottom: 1px solid #e2e8f0;
+    position: sticky;               /* 상단 고정 */
+    top: 0;
+    z-index: 1000;
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-blue);
-}
-
+/* 2. 메뉴 리스트 스타일 초기화 및 정렬 */
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
+    display: flex;                  /* 세로 메뉴를 가로로 변경 */
+    list-style: none;               /* 리스트 점 제거 */
+    margin: 0;
+    padding: 0;
+    gap: 2rem;                      /* 메뉴 간 간격 일정하게 유지 */
     align-items: center;
 }
 
-.hero {
-    text-align: center;
-    padding: 5rem 10%;
+/* 3. 메뉴 링크 텍스트 스타일 */
+.nav-links li a {
+    text-decoration: none;
+    color: #64748b;                 /* 기존 Slate 색상 유지 */
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+.nav-links li a:hover {
+    color: #2563eb;                 /* 호버 시 NextWave 블루로 변경 */
 }
 
-.btn-primary {
-    background: var(--primary-blue);
+/* 4. 로그인 버튼 높이 정렬 */
+.btn-login {
+    background: #2563eb;
     color: white;
     border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    border-radius: 50px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    padding: 5rem 10%;
-    background: white;
-}
-
-.feature-card {
-    padding: 2rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 1rem;
-    text-align: center;
-}
-
-.signup-container {
-    padding: 5rem 10%;
-}
-
-.signup-box {
-    max-width: 400px;
-    margin: 0 auto;
-    background: white;
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-}
-
-.form-step {
-    display: none;
-}
-
-.form-step.active {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-input {
-    padding: 0.8rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 0.5rem;
-}
-
-.btn-next, .btn-submit {
-    background: var(--primary-blue);
-    color: white;
-    border: none;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.warning-text {
-    color: #ef4444;
-    font-size: 0.8rem;
-    text-align: center;
-    margin-top: 1.5rem;
-    font-style: italic;
+    font-size: 0.9rem;
 }
