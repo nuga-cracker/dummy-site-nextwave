@@ -1,76 +1,73 @@
-/* 사이트 전체 폰트 적용 */
-body {
-    margin: 0;
-    font-family: 'Noto Sans KR', sans-serif; /* Noto Sans 적용 */
-    -webkit-font-smoothing: antialiased;
-}
-
-/* 메뉴 링크 스타일 (파란색+밑줄 제거) */
-.nav-links li a {
-    text-decoration: none; /* 밑줄 제거 */
-    color: #334155;        /* 세련된 다크 그레이로 변경 */
-    font-weight: 500;      /* 중간 굵기 */
-    font-size: 1rem;
-    transition: color 0.2s;
-}
-
-.nav-links li a:hover {
-    color: #2563eb;        /* 마우스 올렸을 때만 파란색 */
-}
-
-/* 로고 스타일 */
-.logo {
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 700;      /* 로고는 굵게 */
-    color: #2563eb;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* 1. 네비게이션 바 전체 레이아웃 교정 */
-.navbar {
-    display: flex;
-    justify-content: space-between; /* 로고와 메뉴를 양끝으로 */
-    align-items: center;            /* 수직 중앙 정렬 */
-    padding: 1rem 10%;             /* 좌우 여백 확보 */
-    background: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    position: sticky;               /* 상단 고정 */
-    top: 0;
-    z-index: 1000;
-}
-
-/* 2. 메뉴 리스트 스타일 초기화 및 정렬 */
-.nav-links {
-    display: flex;                  /* 세로 메뉴를 가로로 변경 */
-    list-style: none;               /* 리스트 점 제거 */
+/* 기본 초기화 */
+* {
     margin: 0;
     padding: 0;
-    gap: 2rem;                      /* 메뉴 간 간격 일정하게 유지 */
-    align-items: center;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* 3. 메뉴 링크 텍스트 스타일 */
+body {
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* 네비게이션: 수직 중앙 정렬 및 파란색 제거 */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 8%;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2rem;
+}
+
 .nav-links li a {
     text-decoration: none;
-    color: #64748b;                 /* 기존 Slate 색상 유지 */
-    font-size: 0.95rem;
+    color: #475569; /* 파란색 대신 차분한 그레이 */
     font-weight: 500;
-    transition: color 0.2s ease;
 }
 
-.nav-links li a:hover {
-    color: #2563eb;                 /* 호버 시 NextWave 블루로 변경 */
+/* 회원가입 폼: 가로로 터지는 현상 방지 */
+.signup-box {
+    max-width: 450px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* 4. 로그인 버튼 높이 정렬 */
-.btn-login {
+.form-step {
+    display: flex;
+    flex-direction: column; /* 세로로 정렬 */
+    gap: 1rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.btn-primary {
     background: #2563eb;
     color: white;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 0.9rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
 }
