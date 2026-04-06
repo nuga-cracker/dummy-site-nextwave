@@ -3,32 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextWave</title>
-    
+    <title>NextWave - 맞춤형 AI 협업 툴</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🌊 NextWave</div>
+        <div class="logo" onclick="location.reload()">🌊 NextWave</div>
         <ul class="nav-links">
-            <li><a href="#">제품 기능</a></li>
-            <li><a href="#">엔터프라이즈</a></li>
-            <li><a href="#">요금제</a></li>
-            <li><button class="btn-login">로그인</button></li>
+            <li class="guest-only"><a href="#">기능 소개</a></li>
+            <li class="user-only" style="display:none;"><a href="#">내 프로젝트</a></li>
+            <li><button id="auth-btn" class="btn-auth" onclick="handleAuthClick()">로그인</button></li>
         </ul>
     </nav>
 
-    <header class="hero">
+    <main id="guest-section">
+        <header class="hero">
+            <h1>당신의 정체성에 맞춘<br>최적의 협업 흐름</h1>
+            <p>대학생부터 직장인까지, 불필요한 절차 없이 바로 시작하세요.</p>
+            <button class="btn-primary" onclick="scrollToSignup()">무료 체험하기</button>
+        </header>
+
+        <section id="signup-container" class="signup-container">
+            <div class="signup-box">
+                <h2 id="step-title">유형 선택 (1/3)</h2>
+                <form id="signup-form">
+                    <div id="step-1" class="form-step active">
+                        <div class="type-selector">
+                            <button type="button" class="btn-type" onclick="selectType('student')">🎓 대학생/취준생</button>
+                            <button type="button" class="btn-type" onclick="selectType('worker')">💼 직장인/팀장</button>
+                            <button type="button" class="btn-type" onclick="selectType('freelancer')">🎨 프리랜서/1인기업</button>
+                        </div>
+                    </div>
+                    <div id="step-2" class="form-step">
+                        <input type="text" id="user-name" placeholder="성함" required>
+                        <input type="text" id="input-student" class="type-input" placeholder="학교 및 전공">
+                        <input type="text" id="input-worker" class="type-input" placeholder="회사명 및 부서">
+                        <input type="email" id="user-email" placeholder="이메일 주소" required>
+                        <button type="button" class="btn-next" onclick="goToStep(3)">다음 단계</button>
+                    </div>
+                    <div id="step-3" class="form-step">
+                        <input type="password" id="user-pw" placeholder="비밀번호 설정" required>
+                        <button type="submit" class="btn-submit">가입 완료 및 시작</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <section id="user-section" style="display:none;" class="mypage">
         <div class="container">
-            <h1>업무의 모든 흐름을 하나로 연결하다</h1>
-            <p>일정, 할 일, 문서 공유를 단 하나의 플랫폼에서 관리하세요.<br>대기업도 선택한 최고의 협업 솔루션.</p>
-            <button class="btn-primary">지금 바로 무료로 시작하기 (7일 체험)</button>
+            <div class="welcome-header">
+                <span id="user-badge" class="badge">직장인</span>
+                <h2>반갑습니다, <span id="display-name"></span>님!</h2>
+                <p id="welcome-msg">오늘의 업무 흐름을 확인해보세요.</p>
+            </div>
+            <div id="dashboard-content" class="dashboard-grid">
+                </div>
         </div>
-    </header>
+    </section>
 
     <script src="script.js"></script>
 </body>
