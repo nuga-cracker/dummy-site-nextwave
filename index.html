@@ -3,124 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextWave - 개선 전 프로토타입</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f7f6; }
-        .nav { display: flex; justify-content: space-between; padding: 20px 50px; background: white; border-bottom: 1px solid #eee; align-items: center; }
-        .hero { text-align: center; padding: 100px 20px; background: #fff; }
-        .btn-blue { background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; z-index: 100; }
-        .modal { background: white; padding: 40px; border-radius: 12px; width: 350px; text-align: center; }
-        .input-field { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
-        .dashboard { display: flex; height: 100vh; }
-        .sidebar { width: 200px; background: #2c3e50; color: white; padding: 20px; flex-shrink: 0; }
-        .content { flex: 1; padding: 40px; overflow-y: auto; }
-        .card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; }
-    </style>
+    <title>NextWave 1.0 - All-in-One Enterprise Tool</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="root"></div>
+    <nav class="navbar">
+        <div class="logo">🌊 NextWave</div>
+        <ul class="nav-links">
+            <li><a href="#">제품 기능</a></li>
+            <li><a href="#">엔터프라이즈</a></li>
+            <li><a href="#">요금제</a></li>
+            <li><button class="btn-login">로그인</button></li>
+        </ul>
+    </nav>
 
-    <script type="text/babel">
-        const { useState } = React;
+    <header class="hero">
+        <h1>업무의 모든 흐름을 하나로 연결하다</h1>
+        <p>일정, 할 일, 문서 공유를 단 하나의 플랫폼에서 관리하세요.<br>대기업도 선택한 최고의 협업 솔루션.</p>
+        <button class="btn-primary" onclick="scrollToSignup()">지금 바로 무료로 시작하기 (7일 체험)</button>
+    </header>
 
-        function App() {
-            const [view, setView] = useState('landing');
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">📊</span>
+            <h3>무제한 칸반 & Gantt 차트</h3>
+            <p>복잡한 프로젝트 일정도 한눈에 파악하고 관리할 수 있습니다.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🔒</span>
+            <h3>엔터프라이즈급 보안</h3>
+            <p>SSO 연동 및 감사 로그 기능을 통해 소중한 데이터를 보호합니다.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🛠️</span>
+            <h3>강력한 API 연동</h3>
+            <p>기존에 사용하던 2,000개 이상의 외부 앱과 자유롭게 연결하세요.</p>
+        </div>
+    </section>
 
-            // 1. 메인 랜딩페이지
-            const Landing = () => (
-                <div>
-                    <nav className="nav">
-                       <div style={{display:'flex', alignItems:'center', gap:'10px'}}>
-                            {/* 로고 이미지 */}
-                            <img 
-                                src="/logo.png" 
-                                alt="NextWave Logo" 
-                                style={{height: '30px', width: 'auto'}} 
-                            />
-                            {/* 텍스트 로고 (이미지에 텍스트가 포함되어 있지만, 가독성을 위해 병기) */}
-                            <div style={{fontWeight:'bold', fontSize:'20px', color:'#007bff'}}>
-                                NextWave
-                            </div>
-                        </div>
-
-                        <div style={{fontSize:'14px', color:'#666'}}>로그인 | 고객센터</div>
-                    </nav>
-                    <div className="hero">
-                        <h1 style={{fontSize:'48px', marginBottom:'20px'}}>더 나은 업무를 위한 선택</h1>
-                        <p style={{fontSize:'20px', color:'#777', marginBottom:'40px'}}>일정, 할 일, 문서 공유를 한 곳에서 관리하세요.</p>
-                        <button className="btn-blue" onClick={() => setView('signup')}>지금 무료로 시작하기</button>
-                    </div>
+    <section id="signup-section" class="signup-container">
+        <div class="signup-box">
+            <h2 id="step-title">회원가입 (단계 1/3)</h2>
+            <form id="signup-form">
+                <div id="step-1" class="form-step active">
+                    <input type="text" placeholder="성명" required>
+                    <input type="text" placeholder="회사명 (필수)" required>
+                    <input type="text" placeholder="직책/부서" required>
+                    <button type="button" class="btn-next" onclick="nextStep(2)">다음 단계</button>
                 </div>
-            );
-
-            // 2. 문제의 회원가입창 (이탈률 71.9%)
-            const Signup = () => (
-                <div className="modal-overlay">
-                    <div className="modal">
-                        <h2 style={{marginTop: 0}}>회원가입</h2>
-                        <p style={{fontSize:'13px', color:'#ff4d4f', marginBottom:'20px'}}>* 모든 정보를 빠짐없이 입력해주세요.</p>
-                        <input className="input-field" placeholder="이름 (실명)" />
-                        <input className="input-field" placeholder="회사 이메일 (@company.com)" />
-                        <input className="input-field" type="password" placeholder="비밀번호 (특수문자 포함 10자 이상)" />
-                        <select className="input-field">
-                            <option>직종 선택 (필수)</option>
-                            <option>마케팅/기획</option>
-                            <option>디자인</option>
-                            <option>개발</option>
-                        </select>
-                        <div style={{fontSize:'11px', textAlign:'left', margin:'10px 0', color:'#888'}}>
-                            <input type="checkbox" /> 개인정보 제3자 제공 및 마케팅 활용에 동의합니다.
-                        </div>
-                        <button className="btn-blue" style={{width:'100%', marginTop:'10px', background:'#28a745'}} onClick={() => setView('dashboard')}>가입 완료</button>
-                        <p style={{fontSize:'12px', marginTop:'20px', cursor:'pointer', color:'#999'}} onClick={() => setView('landing')}>나중에 하기</p>
-                    </div>
+                <div id="step-2" class="form-step">
+                    <input type="email" placeholder="이메일 주소" required>
+                    <input type="password" placeholder="비밀번호 (특수문자 포함 10자 이상)" required>
+                    <input type="password" placeholder="비밀번호 재확인" required>
+                    <button type="button" class="btn-next" onclick="nextStep(3)">다음 단계</button>
                 </div>
-            );
-
-            // 3. 대시보드
-            const Dash = () => (
-                <div className="dashboard">
-                    <div className="sidebar">
-                        <h2 style={{color:'#3498db', fontSize:'20px'}}>NextWave</h2>
-                        <div style={{marginTop:'40px', lineHeight:'2.5'}}>
-                            <p style={{cursor:'pointer'}}>🏠 홈 대시보드</p>
-                            <p style={{cursor:'pointer', color:'#999'}}>📅 내 일정</p>
-                            <p style={{cursor:'pointer', color:'#999'}}>✅ 할 일 관리</p>
-                            <p style={{cursor:'pointer', color:'#999'}}>📂 문서함</p>
-                        </div>
+                <div id="step-3" class="form-step">
+                    <p class="small-text">마지막으로 마케팅 정보 수신에 동의해주세요.</p>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agree">
+                        <label for="agree">이용약관 및 개인정보 처리방침 동의</label>
                     </div>
-                    <div className="content">
-                        <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'30px'}}>
-                            <h2>반갑습니다, 사용자님! 👋</h2>
-                            <button onClick={() => setView('landing')} style={{padding:'5px 10px', border:'1px solid #ddd', background:'none', borderRadius:'4px', cursor:'pointer'}}>로그아웃</button>
-                        </div>
-                        <div className="card">
-                            <h4>오늘의 일정</h4>
-                            <p style={{color:'#999', fontSize:'14px'}}>등록된 일정이 없습니다. 일정을 추가해보세요!</p>
-                        </div>
-                        <div className="card">
-                            <h4>진행 중인 프로젝트</h4>
-                            <p style={{color:'#007bff', fontSize:'14px'}}>+ 새 프로젝트 만들기</p>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn-submit">서비스 시작하기</button>
                 </div>
-            );
+            </form>
+            <p class="warning-text">※ 이 단계에서 유저의 71.9%가 이탈 중입니다.</p>
+        </div>
+    </section>
 
-            return (
-                <React.Fragment>
-                    {view === 'landing' && <Landing />}
-                    {view === 'signup' && <Signup />}
-                    {view === 'dashboard' && <Dash />}
-                </React.Fragment>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
