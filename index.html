@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextWave - 과제의 흐름을 바꾸다</title>
+    <title>NextWave</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,39 +23,12 @@
     </nav>
 
     <header class="hero">
-        <h1>업무의 모든 흐름을 하나로 연결하다</h1>
-        <p>일정, 할 일, 문서 공유를 단 하나의 플랫폼에서 관리하세요.<br>대기업도 선택한 최고의 협업 솔루션.</p>
-        <button class="btn-primary" onclick="scrollToSignup()">지금 바로 무료로 시작하기 (7일 체험)</button>
-    </header>
-
-    <section id="signup-section" class="signup-container">
-        <div class="signup-box">
-            <h2 id="step-title">회원가입 (단계 1/3)</h2>
-            <form id="signup-form">
-                <div id="step-1" class="form-step active">
-                    <input type="text" placeholder="성명" required>
-                    <input type="text" placeholder="회사명 (필수)" required>
-                    <input type="text" placeholder="직책/부서" required>
-                    <button type="button" class="btn-next" onclick="nextStep(2)">다음 단계</button>
-                </div>
-                <div id="step-2" class="form-step">
-                    <input type="email" placeholder="이메일 주소" required>
-                    <input type="password" placeholder="비밀번호 (특수문자 포함 10자 이상)" required>
-                    <input type="password" placeholder="비밀번호 재확인" required>
-                    <button type="button" class="btn-next" onclick="nextStep(3)">다음 단계</button>
-                </div>
-                <div id="step-3" class="form-step">
-                    <p class="small-text">마지막으로 마케팅 정보 수신에 동의해주세요.</p>
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree">
-                        <label for="agree">이용약관 및 개인정보 처리방침 동의</label>
-                    </div>
-                    <button type="submit" class="btn-submit">서비스 시작하기</button>
-                </div>
-            </form>
-            <p class="warning-text">※ 이 단계에서 유저의 71.9%가 이탈 중입니다.</p>
+        <div class="container">
+            <h1>업무의 모든 흐름을 하나로 연결하다</h1>
+            <p>일정, 할 일, 문서 공유를 단 하나의 플랫폼에서 관리하세요.<br>대기업도 선택한 최고의 협업 솔루션.</p>
+            <button class="btn-primary">지금 바로 무료로 시작하기 (7일 체험)</button>
         </div>
-    </section>
+    </header>
 
     <script src="script.js"></script>
 </body>
