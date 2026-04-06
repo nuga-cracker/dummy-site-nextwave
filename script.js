@@ -1,21 +1,33 @@
+// 회원가입 섹션으로 스크롤 이동
 function scrollToSignup() {
     document.getElementById('signup-section').scrollIntoView({ behavior: 'smooth' });
 }
 
-function nextStep(step) {
-    // 모든 스텝 숨기기
+// 단계 전환 함수
+function nextStep(stepNumber) {
+    // 1. 모든 스텝에서 active 클래스 제거
     const steps = document.querySelectorAll('.form-step');
-    steps.forEach(s => s.classList.remove('active'));
+    steps.forEach(step => {
+        step.classList.remove('active');
+    });
 
-    // 해당 스텝 보이기
-    document.getElementById(`step-${step}`).classList.add('active');
-
-    // 타이틀 변경
-    document.getElementById('step-title').innerText = `회원가입 (단계 ${step}/3)`;
+    // 2. 선택한 스텝만 active 클래스 추가
+    const targetStep = document.getElementById(`step-${stepNumber}`);
+    if (targetStep) {
+        targetStep.classList.add('active');
+        
+        // 3. 제목 업데이트
+        document.getElementById('step-title').innerText = `회원가입 (단계 ${stepNumber}/3)`;
+    }
 }
 
-// 폼 제출 이벤트 (가상의 완료)
+// 초기 로딩 시 1단계 보이기 (만약 HTML에서 안 보인다면)
+document.addEventListener('DOMContentLoaded', () => {
+    nextStep(1);
+});
+
+// 폼 제출 완료 메시지
 document.getElementById('signup-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    alert('가입 신청이 완료되었습니다. (하지만 데이터상 71.9%는 여기까지 오지 못했습니다.)');
+    alert('죄송합니다. 현재 시스템 점검 중으로 가입이 제한됩니다. (71.9%의 사용자가 여기서 나갔습니다.)');
 });
